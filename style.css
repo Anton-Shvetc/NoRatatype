@@ -4,13 +4,15 @@
 }
 .hidden {
   opacity: 0.3;
+  background: rgb(153, 153, 153);
 }
 
 button {
   border: none;
   outline: none;
   background: #fff;
-}
+  cursor: pointer;
+  }
 span {
   width: 10px;
   height: 10px;
@@ -19,4 +21,19 @@ span {
 .game-button {
   width: 10px;
   height: 10px;
+  font-size: 20px;
 }
+.active {
+  background: rgb(48, 177, 48);
+  color: #000;
+}
+
+#reset {
+  width: 20px;
+  height: 10px;
+  color: green;
+}
+
+
+
+

@@ -3,16 +3,15 @@
 // для начала нам нужна наша формула генереции случайного числа
 // function getRandomInt(max) {
 
-    
+
 //     console.log(Math.floor(Math.random() * Math.floor(max)));
 // // return(Math.floor(Math.random() * Math.floor(max)));
 //     // return Math.floor(max);
-    
-// }
-let lorem = 'Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.'
 
+// }
+let lorem = 'Lorem Ipsum - это текст-"рыба".';
 let str_arr = lorem.split('')
-console.log(str_arr);
+console.log(str_arr.length);
 let colors = ['is-info', 'is-success', 'is-warning', 'is-danger', 'is-link'];
 //цвета фреймворка bulma, в которые мы будем красить наши кнопки
 //при каждой генерации мы будем назначать каждому символу свой цвет, что бы пользователь при печати не путался
@@ -27,10 +26,11 @@ function drawBoard() {
     let buttons = document.querySelector('.buttons');
     for (let index = 0; index < str_arr.length; index++) { // в идеале этот показатель пользователь должен иметь возможность изменить. Разберем это во второй части нашей статьи
         // let rand = str_arr[index] // здесь у нас массив буковок и цифр одинаковый по длине, поэтому я выбрал цвета
-        
-             buttons.insertAdjacentHTML("beforebegin",
+
+        buttons.insertAdjacentHTML("beforebegin",
             `<span class='game-button' id='${str_arr[index]}' >${str_arr[index]}</span>`);
-        
+
+
     }
 }
 
@@ -41,7 +41,10 @@ document.addEventListener('keydown', StartGame, {
 
 function StartGame(e) {
     if (e.key == "Enter") {
+
         drawBoard(); //отрисовка
+        let elements_arr = document.querySelectorAll(".game-button"); // Сократить, повторяется в функции press
+        elements_arr[0].classList.add('active');
         begin.style.display = "none";
         mainGame(); // игра началась
     }
@@ -52,10 +55,15 @@ function mainGame() {
 }
 
 
+
+
 let count_right = 0;
 
 let errors_count = 0;
 let i = 0;
+
+
+
 function press(e) {
 
 
@@ -64,38 +72,45 @@ function press(e) {
     // let i = 0; // нам потребуется индивидуальный счетчик на каждую букву
     // 
     console.log(i);
-console.log(elements_arr[i].id);
-   
+    console.log(elements_arr[i].id);
+
+
 
     // for (let i=0; i < elements_arr.length; i++){}
-    if (e.key == elements_arr[i].id ) {
-         elements_arr[i].classList.add('hidden');
-       // elements_arr[i].remove();
-       i+= 1; 
+    if (e.key == elements_arr[i].id) {
+        elements_arr[i].classList.add('hidden');
+        elements_arr[i].classList.add('active');
+
+        // elements_arr[i].remove();
+        i += 1;
+        elements_arr[i].classList.add('active');
         console.log(i);
-        
-        count_right++; } //  считаем правильные ответы
-    // else if (e.key == "Shift") {}
-    //  else {
-    //      errors_count++; // считаем ошибки
-    //     progress.value = errors_count;
-    //     if (errors_count > 10) {
-    //         let loose = confirm("Game over! Хотите еще раз поиграть?"); 
-    //         console.log(loose);
-    //         if (loose) {
-    //             document.location.reload();
-    //         } else {
-    //             // здесь могла быть ваша реклама
-    //         }
-    //     }
-    // }
-    // if (count_right == str_arr.length) {
-    //     alert("Вы выйграли!");
-    //     let win = confirm("Хотите поиграть еще?");
-    //     if(win){
-    //         document.location.reload();
-    //     }
-    // }
+
+        count_right++;
+    } //  считаем правильные ответы
+    else if (e.key == "Shift") { }
+    else {
+        errors_count++; // считаем ошибки
+        console.log(100 - (errors_count / str_arr.length) * 100); // Выводит в консоль точность 
+
+        progress.value = errors_count;
+        if (errors_count > 100) {
+            let loose = confirm("Game over! Хотите еще раз поиграть?");
+            console.log(loose);
+            if (loose) {
+                document.location.reload();
+            } else {
+                // здесь могла быть ваша реклама
+            }
+        }
+    }
+    if (count_right == str_arr.length) {
+        alert("Вы выйграли!");
+        let win = confirm("Хотите поиграть еще?");
+        if (win) {
+            document.location.reload();
+        }
+    }
 }
 
 
