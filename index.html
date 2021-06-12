@@ -6,28 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Тренажер печати</title>
     <link rel="shortcut icon" href="keyboard.ico" type="image/x-icon" />
-    <script src="code.js" defer></script>
+ 
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="JS/translateTest.js"></script>
+     <script src="code.js" defer></script>
+    
    
     <!-- <link rel="stylesheet" href="bulma.min.css" /> -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <section class="hero is-primary is-large">
-      <!-- воспользуемся готовым элементом hero из bulma -->
-      <div class="hero-head container">
-        <h1 class="label is-size-3 has-text-white promo">Просто тренажер</h1>
-        <h3 class="label is-size-4 has-text-link has-text-centered">Ошибки</h3>
-        <progress
-          id="prog"
-          class="progress is-danger"
-          value="0"
-          max="10"
-        ></progress>
-        <h3 class="label is-size-5 has-text-white has-text-centered begin">
+    <div class="promo"> <h1>NoRatatype</h1>
+      <p>Простой тренажер слепой печати</p>
+    </div>
+
+    <section class="hero ">
+        <div class="start">
+         <h3 class="start__title ">
           Press Enter to Start
         </h3>
-      </div>
+      
       <div class="hero-body has-background-grey-dark">
         <div id="columns">
           <div class="buttons columns is-half is-centered">
@@ -35,10 +36,40 @@
           </div>
         </div>
       </div>
-      <div >
-        <button id="reset">Сброс</button>
+     </div>
+      <!-- воспользуемся готовым элементом hero из bulma -->
+      <div class="statistics">
+        <div class="statistics__err">
+          <h3 >Ошибки <i class="fas fa-exclamation-circle"></i></h3>
+        <span id="statistics__err">0</span>
       </div>
+        
+
+  <!-- <progress
+          id="prog"
+          class="progress is-danger"
+          value="0"
+          max="10"
+        ></progress> -->
+<div class="statistics__acc">
+  
+        <h3 >Точность <i class="fas fa-bullseye" ></i></h3>
+        
+        <span id="statistics__acc">100 %</span>
+        </div>
+        <div class="statistics__speed">
+        <h3 >Скорость <i class="fas fa-tachometer-alt"></i></h3>
+        <span id="statistics__speed">Скоро</span>
+        </div>
+<div class="reset"><button id="reset">Сброс </button> <i class="fas fa-reply"></i></div>
+    
+       
+      </div>
+
+      
+    
     </section>
+    
 
     <script src="JS/reset.js"></script>
   </body>

@@ -1,10 +1,44 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+body {
+  margin: 0 auto;
+  background: rgb(190, 101, 183);
+}
+.promo  {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  
+}
+.hero {
+  display: flex;
+  width: 920px;
+  background: #fff;
+  border-radius: 20px;
+  margin: 0 auto;
+  
+}
+
+
+
+
 #columns {
+  
   width: 700px;
   margin: 0 auto;
+  padding: 20px;
 }
 .hidden {
-  opacity: 0.3;
-  background: rgb(153, 153, 153);
+  
+  background: #fff;
+  padding: 1px;
+  color: rgb(48, 177, 48);
+  
 }
 
 button {
@@ -19,18 +53,56 @@ span {
 }
 
 .game-button {
+ 
   width: 10px;
   height: 10px;
   font-size: 20px;
+  
+  padding: 1px;
 }
 .active {
   background: rgb(48, 177, 48);
-  color: #000;
+  color: #fff;
+  border-radius: 5px;
+  padding: 1px;
+}
+.error {
+  background: rgb(172, 25, 25);
 }
 
 #reset {
-  width: 20px;
-  height: 10px;
+ margin-top: 20px;
+  color: green;
+  
+}
+
+.start {
+width: 700px;
+
+  
+  align-items: center;
+  padding: 20px;
+  
+
+}
+.start-title {
+  width: 200px;
+  
+}
+.statistics {
+  
+  margin: 5px;
+  padding: 20px;
+}
+.statistics__err, .statistics__acc, .statistics__speed  {
+margin-bottom: 10px;
+font-size: 18px;
+}
+.fas {
+  color: rgb(190, 101, 183);
+}
+
+.fa-reply {
   color: green;
 }
 
