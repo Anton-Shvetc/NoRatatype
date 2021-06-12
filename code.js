@@ -10,9 +10,11 @@
 
 // }
 // let lorem = 'Lorem Ipsum - это текст-"рыба".';
+let i = 0;
+let count_right = 0;
 
-
-fetch('https://baconipsum.com/api/?callback=?')
+let errors_count = 0;
+fetch('https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1')
     .then(res => res.json())
     .then(res => {
         console.log(res);
@@ -60,6 +62,8 @@ fetch('https://baconipsum.com/api/?callback=?')
 
             if (e.key == "Enter") {
 
+                findTIME()
+
                 drawBoard(); //отрисовка
                 let elements_arr = document.querySelectorAll(".game-button"); // Сократить, повторяется в функции press
 
@@ -68,6 +72,7 @@ fetch('https://baconipsum.com/api/?callback=?')
                 // elements_arr[0].classList.add('active');
                 begin.style.display = "none";
                 mainGame(); // игра началась
+
             }
         }
 
@@ -78,19 +83,27 @@ fetch('https://baconipsum.com/api/?callback=?')
 
 
 
-        let count_right = 0;
-
-        let errors_count = 0;
 
 
 
-        let i = 0;
+
+
         // let accuracy = 100 - (errors_count / str_arr.length) * 100;
         // console.log(accuracy);
 
         function press(e) {
 
-
+            if ((count_right + 1) == str_arr.length) {
+                // alert("Вы выйграли!");
+                let errorEnd = document.getElementById('statistics__err').textContent;
+                let accuracyEnd = document.getElementById('statistics__acc').textContent;
+                let speedEnd = document.getElementById('statistics__speed').textContent;
+                alert("Количество ошибок: " + errorEnd + "  " + "Точность: " + accuracyEnd + "  " + "Скорость: " + speedEnd);
+                let win = confirm("Хотите попробовать еще?");
+                if (win) {
+                    document.location.reload();
+                }
+            }
 
 
 
@@ -98,8 +111,9 @@ fetch('https://baconipsum.com/api/?callback=?')
             // let i = 0; // нам потребуется индивидуальный счетчик на каждую букву
 
             console.log(i);
-            console.log(elements_arr[i].id);
-            // 
+            // console.log(elements_arr[i].id);
+            // console.log(count_right);
+            console.log(str_arr.length);
 
 
             // for (let i=0; i < elements_arr.length; i++){}
@@ -113,7 +127,7 @@ fetch('https://baconipsum.com/api/?callback=?')
                 i += 1;
 
                 elements_arr[i].classList.add('active');
-                console.log(i);
+                // console.log(i);
 
                 count_right++;
 
@@ -130,32 +144,31 @@ fetch('https://baconipsum.com/api/?callback=?')
                 errors_count++; // считаем ошибки
                 // Выводит в консоль точность 
                 let accuracy = 100 - (errors_count / str_arr.length) * 100
-                document.getElementById('statistics__acc').innerHTML = accuracy.toFixed(2);
+                document.getElementById('statistics__acc').innerHTML = `${accuracy.toFixed(2)} %`;
                 console.log(100 - (errors_count / str_arr.length) * 100);
                 document.getElementById('statistics__err').innerHTML = errors_count;
                 elements_arr[i].classList.add('error');
 
 
-                progress.value = errors_count;
-                if (errors_count > 150) {
-                    let loose = confirm("Game over! Хотите еще раз поиграть?");
+                // progress.value = errors_count;
+                if (errors_count > 20) {
+                    findTIME()
+                    console.log(m + ':' + s + '.');
+                    let loose = confirm("Вы допустили много ошибок! Хотите попробовать еще раз поиграть?");
+
                     console.log(loose);
                     if (loose) {
-                        document.location.reload();
+
+                        // document.location.reload();
                     } else {
                         // здесь могла быть ваша реклама
                     }
                 }
             }
-            if (count_right == str_arr.length) {
-                alert("Вы выйграли!");
-                let win = confirm("Хотите поиграть еще?");
-                if (win) {
-                    document.location.reload();
-                }
-            }
-        }
 
+
+
+        }
 
 
 

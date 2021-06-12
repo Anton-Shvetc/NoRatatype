@@ -10,7 +10,8 @@
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-<script src="JS/translateTest.js"></script>
+
+<script src="JS/speedtest.js"></script>
      <script src="code.js" defer></script>
     
    
@@ -51,6 +52,7 @@
           value="0"
           max="10"
         ></progress> -->
+
 <div class="statistics__acc">
   
         <h3 >Точность <i class="fas fa-bullseye" ></i></h3>
@@ -59,7 +61,7 @@
         </div>
         <div class="statistics__speed">
         <h3 >Скорость <i class="fas fa-tachometer-alt"></i></h3>
-        <span id="statistics__speed">Скоро</span>
+        <span id="statistics__speed">0 зн./мин</span>
         </div>
 <div class="reset"><button id="reset">Сброс </button> <i class="fas fa-reply"></i></div>
     
@@ -70,6 +72,17 @@
     
     </section>
     
+<form name="clockform">
+ <p>Время: 
+ <input name="clock" size="12" maxlength="12" value="00:00:00.00">
+ Метка: 
+ <input name="label" size="12" maxlength="40" value="">
+ <input name="starter" type="button" value="Старт/Стоп" onclick="findTIME()"> 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input name="clearer" type="button" value="Сбросить всё" onclick="clearALL()">
+ </p><p id="marker">
+ </p>
+</form>
 
     <script src="JS/reset.js"></script>
   </body>
