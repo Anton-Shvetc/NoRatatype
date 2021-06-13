@@ -1,3 +1,6 @@
+
+// Появится в следующих версиях 
+
 const rusLower = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 const rusUpper = rusLower.toUpperCase()
 

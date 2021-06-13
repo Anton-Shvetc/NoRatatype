@@ -12,10 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <script src="JS/speedtest.js"></script>
-     <script src="code.js" defer></script>
+     <script src="JS/code.js" defer></script>
     
    
-    <!-- <link rel="stylesheet" href="bulma.min.css" /> -->
+   
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -30,30 +30,22 @@
           Press Enter to Start
         </h3>
       
-      <div class="hero-body has-background-grey-dark">
-        <div id="columns">
-          <div class="buttons columns is-half is-centered">
-            <!-- и здесь у нас будет происходить небольшая отрисовка  -->
+        <div class="hero-body">
+          <div id="columns">
+          <div class="buttons columns ">
+            <!-- место для букв  -->
+          </div>
           </div>
         </div>
-      </div>
-     </div>
-      <!-- воспользуемся готовым элементом hero из bulma -->
+        </div>
+    
       <div class="statistics">
         <div class="statistics__err">
           <h3 >Ошибки <i class="fas fa-exclamation-circle"></i></h3>
         <span id="statistics__err">0</span>
-      </div>
-        
-
-  <!-- <progress
-          id="prog"
-          class="progress is-danger"
-          value="0"
-          max="10"
-        ></progress> -->
-
-<div class="statistics__acc">
+        </div>
+     
+        <div class="statistics__acc">
   
         <h3 >Точность <i class="fas fa-bullseye" ></i></h3>
         
@@ -63,26 +55,12 @@
         <h3 >Скорость <i class="fas fa-tachometer-alt"></i></h3>
         <span id="statistics__speed">0 зн./мин</span>
         </div>
-<div class="reset"><button id="reset">Сброс </button> <i class="fas fa-reply"></i></div>
-    
-       
-      </div>
-
-      
-    
+        <div class="reset"><button id="reset">Сброс </button> <i class="fas fa-reply"></i></div>
+         
+      </div>    
     </section>
     
-<form name="clockform">
- <p>Время: 
- <input name="clock" size="12" maxlength="12" value="00:00:00.00">
- Метка: 
- <input name="label" size="12" maxlength="40" value="">
- <input name="starter" type="button" value="Старт/Стоп" onclick="findTIME()"> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <input name="clearer" type="button" value="Сбросить всё" onclick="clearALL()">
- </p><p id="marker">
- </p>
-</form>
+<form name="clockform"> <p> <input name="clock"></p></form>
 
     <script src="JS/reset.js"></script>
   </body>

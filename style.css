@@ -24,9 +24,6 @@ body {
   
 }
 
-
-
-
 #columns {
   
   width: 700px;
@@ -106,6 +103,27 @@ font-size: 18px;
   color: green;
 }
 
+input {
+  display: none;
+}
+
+
+@media screen and (max-width: 910px) {
+  .hero {
+    width: 700px;
+    display: block;
+  }
+  #columns {
+    width: 700px;
+    padding: 5px;
+  }
+  .statistics {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+}
 
 
 
