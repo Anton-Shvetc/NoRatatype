@@ -91,7 +91,9 @@ width: 700px;
   margin: 5px;
   padding: 20px;
 }
-.statistics__err, .statistics__acc, .statistics__speed  {
+.statistics__err, 
+.statistics__acc, 
+.statistics__speed  {
 margin-bottom: 10px;
 font-size: 18px;
 }
@@ -121,8 +123,7 @@ input {
     display: flex;
     justify-content: space-between;
   }
-  
-  
+   
 }
 
 

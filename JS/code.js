@@ -1,14 +1,14 @@
 
 let i = 0;
-let count_right = 0;
-let errors_count = 0;
+let countRight = 0;
+let ErrorsCount = 0;
+const GET_TEXT_URL = 'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
 
-fetch('https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1')
+fetch(GET_TEXT_URL)
     .then(res => res.json())
     .then(res => {
-        console.log(res);
-        console.log(typeof (res[0]));
-        let str_arr = res[0].split('')
+
+        let strArr = res[0].split('')
 
         let begin = document.querySelector(".start__title"); // надпись, которая приглашает пользователя нажать enter для начала игры. 
 
@@ -16,10 +16,10 @@ fetch('https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
         function drawBoard() {
 
             let buttons = document.querySelector('.buttons');
-            for (let index = 0; index < str_arr.length; index++) {
+            for (let index = 0; index < strArr.length; index++) {
 
                 buttons.insertAdjacentHTML("beforebegin",
-                    `<span class='game-button' id='${str_arr[index]}' >${str_arr[index]}</span>`);
+                    `<span class='game-button' id='${strArr[index]}' >${strArr[index]}</span>`);
 
             }
 
@@ -38,10 +38,10 @@ fetch('https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
                 findTIME();  // Старт секундомера для прорисовки времени
 
                 drawBoard(); //отрисовка
-                let elements_arr = document.querySelectorAll(".game-button"); // Сократить, повторяется в функции press
+                let elementsArr = document.querySelectorAll(".game-button"); // Сократить, повторяется в функции press
 
-                console.log(document.querySelectorAll(".game-button"))
-                elements_arr[i].classList.add('active');
+
+                elementsArr[i].classList.add('active');
 
                 begin.style.display = "none";
                 mainGame(); // игра началась
@@ -57,7 +57,7 @@ fetch('https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
 
         function press(e) {
 
-            if ((count_right + 1) == str_arr.length) {
+            if ((countRight + 1) == strArr.length) {
 
                 let errorEnd = document.getElementById('statistics__err').textContent;
                 let accuracyEnd = document.getElementById('statistics__acc').textContent;
@@ -71,32 +71,32 @@ fetch('https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
                 }
             }
 
-            let elements_arr = document.querySelectorAll(".game-button");  // выбираем все созданные кнопки
+            let elementsArr = document.querySelectorAll(".game-button");  // выбираем все созданные кнопки
 
-            if (e.key == elements_arr[i].id) {
+            if (e.key == elementsArr[i].id) {
 
 
-                elements_arr[i].classList.add('hidden');
-                elements_arr[i].classList.remove('error');
-                elements_arr[i].classList.remove('active');
+                elementsArr[i].classList.add('hidden');
+                elementsArr[i].classList.remove('error');
+                elementsArr[i].classList.remove('active');
 
                 i += 1;
 
-                elements_arr[i].classList.add('active');
+                elementsArr[i].classList.add('active');
 
 
-                count_right++;
+                countRight++;
 
             }
             else if (e.key == "Shift") { }
 
             else {
-                errors_count++; // считаем ошибки
+                ErrorsCount++; // считаем ошибки
 
-                let accuracy = 100 - (errors_count / str_arr.length) * 100
-                document.getElementById('statistics__acc').innerHTML = `${accuracy.toFixed(2)} %`;
-                document.getElementById('statistics__err').innerHTML = errors_count;
-                elements_arr[i].classList.add('error');
+                let accuracy = 100 - (ErrorsCount / strArr.length) * 100
+                document.getElementById('statistics__acc').innerText = `${accuracy.toFixed(2)} %`;
+                document.getElementById('statistics__err').innerText = ErrorsCount;
+                elementsArr[i].classList.add('error');
 
             }
 

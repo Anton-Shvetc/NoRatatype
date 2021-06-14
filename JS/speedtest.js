@@ -1,17 +1,17 @@
 function trim(string) { return string.replace(/\s+/g, " ").replace(/(^\s*)|(\s*)$/g, ''); }
 let init = 0;
 let startDate;
-let clocktimer;
+let clockTimer;
 
 function clearFields() {
     init = 0;
-    clearTimeout(clocktimer);
+    clearTimeout(clockTimer);
 
 }
 
 function clearALL() {
     clearFields();
-    document.getElementById('marker').innerHTML = '';
+    document.getElementById('marker').innerText = '';
 }
 
 function startTIME() {
@@ -19,13 +19,14 @@ function startTIME() {
     let t = thisDate.getTime() - startDate.getTime();
     t = Math.floor(t / 1000);
     let s = t;
-
     if (init == 1) document.clockform.clock.value = s + '.';
-    clocktimer = setTimeout("startTIME()", 10);
+    clockTimer = clocktimer = setTimeout(() => {
+        startTIME();
+    }, 10);
     let speed = 0
     speed = 60 / s * i;
 
-    document.getElementById('statistics__speed').innerHTML = `${speed.toFixed(0)} зн./мин`
+    document.getElementById('statistics__speed').innerText = `${speed.toFixed(0)} зн./мин`
 
 }
 
