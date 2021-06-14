@@ -25,7 +25,6 @@ function startTIME() {
     }, 10);
     let speed = 0
     speed = 60 / s * i;
-
     document.getElementById('statistics__speed').innerText = `${speed.toFixed(0)} зн./мин`
 
 }

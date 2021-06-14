@@ -97,7 +97,6 @@ fetch(GET_TEXT_URL)
                 document.getElementById('statistics__acc').innerText = `${accuracy.toFixed(2)} %`;
                 document.getElementById('statistics__err').innerText = ErrorsCount;
                 elementsArr[i].classList.add('error');
-
             }
 
         }
